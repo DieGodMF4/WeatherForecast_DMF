@@ -1,5 +1,6 @@
 package marrero_ferrera_gcid_ulpgc.test.model;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -36,42 +37,6 @@ public class OpenWeatherMapSupplier implements WeatherSupplier {
         this.apiKey = apiKey;
     }
 
-    /*
-        @Override
-        public Weather getWeather(){
-            HttpClient httpClient = HttpClients.createDefault();
-
-            String httpUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + location.getLatitude() +
-                    "&lon=" + location.getLongitude() + "&units=metric&appid=" + apiKey;
-            HttpGet httpGet = new HttpGet(httpUrl);
-
-            try {
-                HttpResponse response = httpClient.execute(httpGet);
-                String json = EntityUtils.toString(response.getEntity());
-
-                JsonObject jsonObject = new com.google.gson.JsonParser().parse(json).getAsJsonObject();
-
-                // Extract the "temp" value
-                int listSize = jsonObject.getAsJsonArray("list").size();
-                List<Float> tempValues = new ArrayList<>();
-
-                for (int i=0;i<listSize;i++){
-                    tempValues.add(jsonObject.getAsJsonArray("list")
-                            .get(i)
-                            .getAsJsonObject()
-                            .getAsJsonObject("main")
-                            .get("temp")
-                            .getAsFloat());
-                }
-
-                System.out.println("Temperature: " + tempValues);
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-        }
-    */
     @Override
     public Weather getWeather(Location location, Instant ts) { //ts= instante en el que se hace la consulta
         HttpClient httpClient = HttpClients.createDefault();
@@ -86,18 +51,14 @@ public class OpenWeatherMapSupplier implements WeatherSupplier {
 
             JsonObject jsonObject = new com.google.gson.JsonParser().parse(json).getAsJsonObject();
 
-            // Extract the "temp" value
-            int listSize = jsonObject.getAsJsonArray("list").size();
-            List<Float> tempValues = new ArrayList<>();
+            // Extract the values
 
-            for (int i = 0; i < listSize; i++) {
-                tempValues.add(jsonObject.getAsJsonArray("list")
-                        .get(i)
-                        .getAsJsonObject()
-                        .getAsJsonObject("main")
-                        .get("temp")
-                        .getAsFloat());
-            }
+            JsonObject secondListObject = jsonObject.getAsJsonArray("list").get(1).getAsJsonObject();
+            float temperature = secondListObject.getAsJsonObject("main")
+                    .get("temp").getAsFloat();
+            float rain = secondListObject.;
+            int clouds = secondListObject.;
+            float humidity = secondListObject.;
 
             System.out.println("Temperature: " + tempValues);
             Weather weather = new Weather(getRain(), getClouds(), getTemp(), getHumidity(), getLocation(), ts);
