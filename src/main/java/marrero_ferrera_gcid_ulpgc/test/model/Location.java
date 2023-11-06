@@ -3,10 +3,12 @@ package marrero_ferrera_gcid_ulpgc.test.model;
 public class Location {
     private float latitude;
     private float longitude;
+    private String island;
 
-    public Location(float latitude, float longitude) {
+    public Location(float latitude, float longitude, String island) {
         this.latitude = latitude;
         this.longitude = longitude;
+        this.island = island;
     }
 
     public float getLatitude() {
@@ -23,5 +25,13 @@ public class Location {
 
     public void setLongitude(float longitude) {
         this.longitude = longitude;
+    }
+
+    public String getIsland() {
+        return island;
+    }
+
+    public void setIsland(String island) {
+        this.island = island;
     }
 }

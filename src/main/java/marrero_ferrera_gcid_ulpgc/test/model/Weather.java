@@ -2,19 +2,20 @@ package marrero_ferrera_gcid_ulpgc.test.model;
 import java.time.Instant;
 
 public class Weather {
-    private static Instant ts;
+    private Instant ts;
     private float rain;
     private int clouds;
     private float temperature;
     private float humidity;
     private Location location;
 
-    public Weather(float rain, int clouds, float temperature, float humidity, Location location) {
+    public Weather(float rain, int clouds, float temperature, float humidity, Location location, Instant ts) {
         this.rain = rain;
         this.clouds = clouds;
         this.temperature = temperature;
         this.humidity = humidity;
         this.location = location;
+        this.ts = ts;
     }
 
     public float getRain() {
@@ -55,5 +56,13 @@ public class Weather {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public Instant getTs() {
+        return ts;
+    }
+
+    public void setTs(Instant ts) {
+        this.ts = ts;
     }
 }
