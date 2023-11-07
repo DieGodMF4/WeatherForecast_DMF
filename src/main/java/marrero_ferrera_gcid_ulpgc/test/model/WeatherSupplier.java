@@ -4,7 +4,7 @@ import java.time.Instant;
 import java.util.List;
 
 public interface WeatherSupplier {
-    List<Weather> getWeather(Location location, List<Instant> ts);
+    Weather getWeather(Location location, Instant ts);
     /*
     float getTemp();
     float getRain();

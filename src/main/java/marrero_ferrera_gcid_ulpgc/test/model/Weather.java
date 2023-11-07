@@ -76,4 +76,11 @@ public class Weather {
     public void setRain(float rain) {
         this.rain = rain;
     }
+
+    @Override
+    public String toString() {
+        return "The weather can be determined with " + getWeatherType() + " at " + getTs() +
+                ".\nThe temperature is " + getTemperature() + "ºC with a " + getHumidity() + "% of humidity" +
+                "; we have a " + getClouds() + "% of clouds and a " + getRain() + "% rate of precipitations";
+    }
 }
