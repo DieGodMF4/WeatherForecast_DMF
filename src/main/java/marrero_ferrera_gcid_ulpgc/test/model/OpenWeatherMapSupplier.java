@@ -1,6 +1,5 @@
 package marrero_ferrera_gcid_ulpgc.test.model;
 
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -38,7 +37,7 @@ public class OpenWeatherMapSupplier implements WeatherSupplier {
     }
 
     @Override
-    public Weather getWeather(Location location, Instant ts) { //ts= instante en el que se hace la consulta
+    public List<Weather> getWeather(Location location, List<Instant> ts) { //ts= instante en el que se hace la consulta
         HttpClient httpClient = HttpClients.createDefault();
 
         String httpUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + location.getLatitude() +
@@ -52,17 +51,29 @@ public class OpenWeatherMapSupplier implements WeatherSupplier {
             JsonObject jsonObject = new com.google.gson.JsonParser().parse(json).getAsJsonObject();
 
             // Extract the values
+            int listSize = jsonObject.getAsJsonArray("list").size();
+            List<Float> temperatures = new ArrayList<>();
+            List<Float> humidities = new ArrayList<>();
+            List<String> weatherTypes = new ArrayList<>();
+            List<Integer> clouds = new ArrayList<>();
+            List<Float> rains = new ArrayList<>();
 
-            JsonObject secondListObject = jsonObject.getAsJsonArray("list").get(1).getAsJsonObject();
-            float temperature = secondListObject.getAsJsonObject("main")
-                    .get("temp").getAsFloat();
-            float rain = secondListObject.;
-            int clouds = secondListObject.;
-            float humidity = secondListObject.;
+            for (int i = 0; i < listSize; i += 2) {
+                JsonObject currentListObject = jsonObject.getAsJsonArray("list").get(i).getAsJsonObject();
+                temperatures.add(currentListObject.getAsJsonObject("main")
+                        .get("temp").getAsFloat());
+                weatherTypes.add(currentListObject.getAsJsonArray("weather")
+                        .get(0).getAsJsonObject().get("main").getAsString());
+                clouds.add(currentListObject.getAsJsonObject("clouds")
+                        .get("all").getAsInt());
+                humidities.add(currentListObject.getAsJsonObject("main")
+                        .get("humidity").getAsFloat());
+                rains.add(currentListObject.get("pop").getAsFloat());
+            }
 
             System.out.println("Temperature: " + tempValues);
-            Weather weather = new Weather(getRain(), getClouds(), getTemp(), getHumidity(), getLocation(), ts);
-            return weather;
+            List<Weather> weathers = new Weather(weatherTypes, clouds, temperatures, humidities, location, ts, rains);
+            return weathers;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

@@ -3,28 +3,23 @@ import java.time.Instant;
 
 public class Weather {
     private Instant ts;
-    private float rain;
+    private String weatherType;
     private int clouds;
     private float temperature;
+    private float rain;
     private float humidity;
     private Location location;
 
-    public Weather(float rain, int clouds, float temperature, float humidity, Location location, Instant ts) {
-        this.rain = rain;
+    public Weather(String weatherType, int clouds, float temperature, float humidity, Location location, Instant ts, float rain) {
+        this.weatherType = weatherType;
         this.clouds = clouds;
         this.temperature = temperature;
         this.humidity = humidity;
         this.location = location;
         this.ts = ts;
-    }
-
-    public float getRain() {
-        return rain;
-    }
-
-    public void setRain(float rain) {
         this.rain = rain;
     }
+
 
     public int getClouds() {
         return clouds;
@@ -64,5 +59,21 @@ public class Weather {
 
     public void setTs(Instant ts) {
         this.ts = ts;
+    }
+
+    public String getWeatherType() {
+        return weatherType;
+    }
+
+    public void setWeatherType(String weatherType) {
+        this.weatherType = weatherType;
+    }
+
+    public float getRain() {
+        return rain;
+    }
+
+    public void setRain(float rain) {
+        this.rain = rain;
     }
 }
