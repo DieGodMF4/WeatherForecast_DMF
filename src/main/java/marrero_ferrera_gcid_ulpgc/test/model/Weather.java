@@ -1,4 +1,5 @@
 package marrero_ferrera_gcid_ulpgc.test.model;
+
 import java.time.Instant;
 
 public class Weather {
@@ -79,8 +80,8 @@ public class Weather {
 
     @Override
     public String toString() {
-        return "The weather can be determined with " + getWeatherType() + " at " + getTs() +
+        return "The weather in " + getLocation().getName() + ", " + getLocation().getIsland() + ", can be defined with " + getWeatherType() + " at " + getTs() +
                 ".\nThe temperature is " + getTemperature() + "ºC with a " + getHumidity() + "% of humidity" +
-                "; we have a " + getClouds() + "% of clouds and a " + getRain() + "% rate of precipitations";
+                "; we have a " + getClouds() + "% of clouds and a " + getRain() + "% rate of precipitations.";
     }
 }

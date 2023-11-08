@@ -4,11 +4,13 @@ public class Location {
     private float latitude;
     private float longitude;
     private String island;
+    private String name;
 
-    public Location(float latitude, float longitude, String island) {
+    public Location(float latitude, float longitude, String island, String name) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.island = island;
+        this.name = name;
     }
 
     public float getLatitude() {
@@ -33,5 +35,13 @@ public class Location {
 
     public void setIsland(String island) {
         this.island = island;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

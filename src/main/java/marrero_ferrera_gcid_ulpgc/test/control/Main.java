@@ -5,7 +5,7 @@ import java.time.Instant;
 
 public class Main {
     public static void main(String[] args) {
-        Location location = new Location(28.01f, -15.58f, "Gran Canaria");
+        Location location = new Location(28.01f, -15.58f, "Gran Canaria", "Risco Prieto");
         String apiKey = "3c3aea5ce433b076c2f83b0c608896d8";
 
         Instant instant = Instant.parse("2023-11-09T12:00:00Z");
