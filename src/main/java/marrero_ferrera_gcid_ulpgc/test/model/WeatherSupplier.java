@@ -5,10 +5,4 @@ import java.util.List;
 
 public interface WeatherSupplier {
     Weather getWeather(Location location, Instant ts);
-    /*
-    float getTemp();
-    float getRain();
-    int getClouds();
-    float getHumidity();
-*/
 }

@@ -46,19 +46,17 @@ public class OpenWeatherMapSupplier implements WeatherSupplier {
             HttpResponse response = httpClient.execute(httpGet);
             String json = EntityUtils.toString(response.getEntity());
 
-            // Convert Instant to Unix timestamp
             long unixTimestamp = ts.getEpochSecond();
 
             JsonObject jsonObject = new com.google.gson.JsonParser().parse(json).getAsJsonObject();
-
-            // Extract the values
-            int listSize = jsonObject.getAsJsonArray("list").size();
 
             float temperature;
             float humidity;
             String weatherType;
             int cloud;
             float rain;
+
+            int listSize = jsonObject.getAsJsonArray("list").size();
 
             for (int i = 0; i < listSize; i += 2) {
                 JsonObject currentListObject = jsonObject.getAsJsonArray("list").get(i).getAsJsonObject();

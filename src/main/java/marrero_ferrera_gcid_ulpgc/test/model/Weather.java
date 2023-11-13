@@ -74,6 +74,10 @@ public class Weather {
         return rain;
     }
 
+    public long getTimeInteger() {
+        return ts.getEpochSecond();
+    }
+
     public void setRain(float rain) {
         this.rain = rain;
     }
