@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b968665-5731-4f54-b921-263a376be308" name="Changes" comment="First DB code created. ERRORS COMPILATIONS">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="5b968665-5731-4f54-b921-263a376be308" name="Changes" comment="SQL functions added. getWeather() now not functional (???.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/marrero_ferrera_gcid_ulpgc/test/control/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/marrero_ferrera_gcid_ulpgc/test/control/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/marrero_ferrera_gcid_ulpgc/test/model/OpenWeatherMapSupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/marrero_ferrera_gcid_ulpgc/test/model/OpenWeatherMapSupplier.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/marrero_ferrera_gcid_ulpgc/test/model/SQLiteWeatherStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/marrero_ferrera_gcid_ulpgc/test/model/SQLiteWeatherStore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/marrero_ferrera_gcid_ulpgc/test/model/Weather.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/marrero_ferrera_gcid_ulpgc/test/model/Weather.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/marrero_ferrera_gcid_ulpgc/test/model/WeatherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/marrero_ferrera_gcid_ulpgc/test/model/WeatherController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/marrero_ferrera_gcid_ulpgc/test/model/WeatherStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/marrero_ferrera_gcid_ulpgc/test/model/WeatherStore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/marrero_ferrera_gcid_ulpgc/test/model/WeatherSupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/marrero_ferrera_gcid_ulpgc/test/model/WeatherSupplier.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +138,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699626737261</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="SQL functions added. getWeather() now not functional (???.">
+      <option name="closed" value="true" />
+      <created>1699883427230</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1699883427230</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -163,7 +167,8 @@
     <MESSAGE value="getWeather reformed. First tests tried" />
     <MESSAGE value="getWeather reformed and functional." />
     <MESSAGE value="First DB code created. ERRORS COMPILATIONS" />
-    <option name="LAST_COMMIT_MESSAGE" value="First DB code created. ERRORS COMPILATIONS" />
+    <MESSAGE value="SQL functions added. getWeather() now not functional (???." />
+    <option name="LAST_COMMIT_MESSAGE" value="SQL functions added. getWeather() now not functional (???." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

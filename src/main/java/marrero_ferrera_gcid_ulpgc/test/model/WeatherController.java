@@ -1,5 +1,6 @@
 package marrero_ferrera_gcid_ulpgc.test.model;
 
+import java.time.Instant;
 import java.util.ArrayList;
 
 public class WeatherController {
@@ -12,16 +13,12 @@ public class WeatherController {
         this.weatherStore = new SQLiteWeatherStore(dbPath);
     }
 
-    /*
-    public void fetchAndStoreWeatherData() {
-        // Fetch weather data from the API using WeatherSupplier
-        WeatherData weatherData = weatherSupplier.fetchWeatherData();
-
+    public void getAndStoreWeatherData(Location location, String apiKey, String dbPath, Instant instant) {
+        //this.weatherSupplier.
         // Store the weather data in the database using WeatherStore
-        weatherStore.storeWeatherData(weatherData);
+        //weatherStore.storeWeatherData(weatherData);
     }
 
-     */
 
     public void addWeather(Weather weather) {
         if (!weathers.contains(weather)) {

@@ -58,7 +58,7 @@ public class OpenWeatherMapSupplier implements WeatherSupplier {
 
             int listSize = jsonObject.getAsJsonArray("list").size();
 
-            for (int i = 0; i < listSize; i += 2) {
+            for (int i = 0; i < listSize; i++) {
                 JsonObject currentListObject = jsonObject.getAsJsonArray("list").get(i).getAsJsonObject();
                 if (currentListObject.get("dt").getAsLong() == unixTimestamp) {
                     temperature = currentListObject.getAsJsonObject("main")

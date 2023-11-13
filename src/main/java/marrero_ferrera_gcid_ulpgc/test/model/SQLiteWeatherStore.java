@@ -43,10 +43,10 @@ public class SQLiteWeatherStore implements WeatherStore {
 
     @Override
     public void insertWeather(Weather weather) {
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:weatherDataBase.db");
+        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath);
              PreparedStatement statement = connection.prepareStatement(
-                     "INSERT INTO weatherDataBase (latitude, longitude, island, name_place, time, weatherType, temperature, rain, humidity, clouds) " +
-                             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
+                     "INSERT INTO IF NOT EXISTS weatherDataBase (id, latitude, longitude, island, name_place, time, weatherType, temperature, rain, humidity, clouds) " +
+                             "VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
             statement.setDouble(1, weather.getLocation().getLatitude());
             statement.setDouble(2, weather.getLocation().getLongitude());
             statement.setString(3, weather.getLocation().getIsland());
@@ -59,6 +59,7 @@ public class SQLiteWeatherStore implements WeatherStore {
             statement.setInt(10, weather.getClouds());
 
             statement.executeUpdate();
+            System.out.println("Weather data inserted succesfully.");
         } catch (SQLException e) {
             e.getMessage();
         }

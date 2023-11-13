@@ -5,6 +5,8 @@ import marrero_ferrera_gcid_ulpgc.test.model.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.Instant;
+import java.util.TimerTask;
+import java.util.Timer;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
@@ -13,18 +15,14 @@ public class Main {
         String dbPath = "weatherDataBase.db";
         WeatherController controller = new WeatherController(location, apiKey, dbPath);
 
-        /*
-        String dbPath = "weatherDataBase.db";
-        WeatherController controller = new WeatherController(location, apiKey, dbPath);
         Connection connection = controller.getWeatherStore().connectWeather();
         controller.getWeatherStore().createTable(connection);
 
-         */
-
         Instant instant = Instant.parse("2023-11-14T12:00:00Z");
-        OpenWeatherMapSupplier supplier = new OpenWeatherMapSupplier(location, apiKey);
-        Weather weather = supplier.getWeather(location, instant);
+        Weather weather = controller.getWeatherSupplier().getWeather(location, instant);
         System.out.println(weather.toString());
+        controller.getWeatherStore().insertWeather(weather);
+
 
 
         /*
@@ -35,8 +33,5 @@ public class Main {
             CREAR CLASES "WEATHERCONTROLLER Y WEATHERSUPPLIER"
         3.
          */
-
-        // DESERIALIZAR CON GSON EL TEXTO DEL API TESTER
-        // JsonObject.class
     }
 }
