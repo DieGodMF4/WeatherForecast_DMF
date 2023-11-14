@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b968665-5731-4f54-b921-263a376be308" name="Changes" comment="SQL functions added. getWeather() now not functional (???.">
+    <list default="true" id="5b968665-5731-4f54-b921-263a376be308" name="Changes" comment="SQL functions added and functional. getAndStoreWeather()">
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/marrero_ferrera_gcid_ulpgc/test/control/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/marrero_ferrera_gcid_ulpgc/test/control/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/marrero_ferrera_gcid_ulpgc/test/model/OpenWeatherMapSupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/marrero_ferrera_gcid_ulpgc/test/model/OpenWeatherMapSupplier.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/marrero_ferrera_gcid_ulpgc/test/model/SQLiteWeatherStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/marrero_ferrera_gcid_ulpgc/test/model/SQLiteWeatherStore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/marrero_ferrera_gcid_ulpgc/test/model/WeatherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/marrero_ferrera_gcid_ulpgc/test/model/WeatherController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/marrero_ferrera_gcid_ulpgc/test/model/WeatherStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/marrero_ferrera_gcid_ulpgc/test/model/WeatherStore.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +27,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
@@ -53,8 +57,60 @@
       <recent name="C:\Users\dmarr\IdeaProjects\practice1_v2\src\main\java\marrero_ferrera_gcid_ulpgc" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Main (5)">
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.test.control.Main" />
+      <module name="practice1_v2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="marrero_ferrera_gcid_ulpgc.test.control.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.test.control.Main" />
+      <module name="practice1_v2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="marrero_ferrera_gcid_ulpgc.test.control.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.test.control.Main" />
+      <module name="practice1_v2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="marrero_ferrera_gcid_ulpgc.test.control.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.test.control.Main" />
+      <module name="practice1_v2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="marrero_ferrera_gcid_ulpgc.test.control.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (5)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="marrero_ferrera_gcid_ulpgc.test.control.Main" />
       <module name="practice1_v2" />
       <extension name="coverage">
@@ -69,7 +125,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main (5)" />
+        <item itemvalue="Application.Main (4)" />
+        <item itemvalue="Application.Main (3)" />
+        <item itemvalue="Application.Main (2)" />
+        <item itemvalue="Application.Main (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -146,7 +206,15 @@
       <option name="project" value="LOCAL" />
       <updated>1699883427230</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="SQL functions added and functional. getAndStoreWeather()">
+      <option name="closed" value="true" />
+      <created>1699885655925</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1699885655925</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -168,7 +236,8 @@
     <MESSAGE value="getWeather reformed and functional." />
     <MESSAGE value="First DB code created. ERRORS COMPILATIONS" />
     <MESSAGE value="SQL functions added. getWeather() now not functional (???." />
-    <option name="LAST_COMMIT_MESSAGE" value="SQL functions added. getWeather() now not functional (???." />
+    <MESSAGE value="SQL functions added and functional. getAndStoreWeather()" />
+    <option name="LAST_COMMIT_MESSAGE" value="SQL functions added and functional. getAndStoreWeather()" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
