@@ -11,7 +11,7 @@ import java.time.Instant;
 
 public class OpenWeatherMapSupplier implements WeatherSupplier {
     private Location location;
-    private String apiKey; // 3c3aea5ce433b076c2f83b0c608896d8
+    private String apiKey;
 
     public OpenWeatherMapSupplier(Location location, String apiKey) {
         this.location = location;

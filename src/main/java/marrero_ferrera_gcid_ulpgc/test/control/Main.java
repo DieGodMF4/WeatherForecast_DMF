@@ -3,85 +3,33 @@ package marrero_ferrera_gcid_ulpgc.test.control;
 import marrero_ferrera_gcid_ulpgc.test.model.*;
 
 import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.TimerTask;
 import java.util.Timer;
-import java.time.Instant;
 
 public class Main {
-
     public static void main(String[] args) throws SQLException {
         Location locationGC = new Location(28.01f, -15.58f, "Gran Canaria", "Risco Prieto");
         Location locationLGra = new Location(29.234f, -13.5f, "La Graciosa", "Caleta del Sebo");
         Location locationLzr = new Location(29f,  -13.5f, "Lanzarote", "Costa Teguise");
+        Location locationFtv = new Location(28.35f,  -14.11f, "Fuerteventura", "Pájara");
+        Location locationLGom = new Location(28.1f,  -17.12f, "La Gomera", "San Sebastián de La Gomera");
+        Location locationLP = new Location(28.8f,  -17.81f, "La Palma", "Bosque de Los Tilos");
+        Location locationEH = new Location(27.73f,  -18.05f, "El Hierro", "El Pinar");
+        Location locationTnf = new Location(28.28f,  -16.64f, "Tenerife", "Parque Nacional del Teide");
 
         String apiKey = "3c3aea5ce433b076c2f83b0c608896d8";
         String dbPath = "weatherDataBase.db";
 
         Timer timer = new Timer();
+        short delay = 0;
+        long period = 6 * 60 * 60 * 1000;
 
-        long delay = 0;
-        long period = 6 * 1000;
-        timer.scheduleAtFixedRate(new MyTask(locationGC, apiKey, dbPath), delay, period);
-    }
-
-    static class MyTask extends TimerTask {
-        private Location location;
-        private String  apiKey;
-        private String dbPath;
-        public MyTask(Location location, String apiKey, String dbPath) {
-            this.location = location;
-            this.apiKey = apiKey;
-            this.dbPath = dbPath;
-        }
-
-        @Override
-        public void run() {
-            LocalDateTime now = LocalDateTime.now();
-
-            LocalDateTime scheduledTime = now.withHour(12).withMinute(0).withSecond(0).withNano(0);
-
-            if (now.isAfter(scheduledTime)) {
-                scheduledTime = scheduledTime.plusDays(1);
-            }
-
-            WeatherController controller = new WeatherController();
-
-            for (int i = 0; i < 5; i++) {
-                LocalDateTime nextExecutionTime = scheduledTime.plusDays(i);
-                Instant instant = nextExecutionTime.atZone(ZoneId.systemDefault()).toInstant();
-
-                try {
-                    controller.getAndStoreWeatherData(location, apiKey, dbPath, instant);
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        }
-
-        public Location getLocation() {
-            return location;
-        }
-
-        public void setLocation(Location location) {
-            this.location = location;
-        }
-
-        public String getApiKey() {
-            return apiKey;
-        }
-
-        public void setApiKey(String apiKey) {
-            this.apiKey = apiKey;
-        }
-
-        public String getDbPath() {
-            return dbPath;
-        }
-
-        public void setDbPath(String dbPath) {
-            this.dbPath = dbPath;
-        }
+        timer.scheduleAtFixedRate(new Task(locationGC, apiKey, dbPath), delay, period);
+        timer.scheduleAtFixedRate(new Task(locationLGra, apiKey, dbPath), delay, period);
+        timer.scheduleAtFixedRate(new Task(locationLzr, apiKey, dbPath), delay, period);
+        timer.scheduleAtFixedRate(new Task(locationFtv, apiKey, dbPath), delay, period);
+        timer.scheduleAtFixedRate(new Task(locationLGom, apiKey, dbPath), delay, period);
+        timer.scheduleAtFixedRate(new Task(locationLP, apiKey, dbPath), delay, period);
+        timer.scheduleAtFixedRate(new Task(locationEH, apiKey, dbPath), delay, period);
+        timer.scheduleAtFixedRate(new Task(locationTnf, apiKey, dbPath), delay, period);
     }
 }

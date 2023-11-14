@@ -43,32 +43,29 @@ public class SQLiteWeatherStore implements WeatherStore {
     @Override
     public void insertWeather(Weather weather) throws SQLException {
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath)) {
-             if(!weatherExists(connection, weather)) {
-            String query = "INSERT INTO weatherDataBase(id, latitude, longitude, island, name_place, time, weatherType, temperature, rain, humidity, clouds) " +
-                    "VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            try (PreparedStatement statement = connection.prepareStatement(query)) {
+            if (!weatherExists(connection, weather)) {
+                String query = "INSERT INTO weatherDataBase(id, latitude, longitude, island, name_place, time, weatherType, temperature, rain, humidity, clouds) " +
+                        "VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                try (PreparedStatement statement = connection.prepareStatement(query)) {
 
-                statement.setDouble(1, weather.getLocation().getLatitude());
-                statement.setDouble(2, weather.getLocation().getLongitude());
-                statement.setString(3, weather.getLocation().getIsland());
-                statement.setString(4, weather.getLocation().getName());
-                statement.setLong(5, weather.getTimeInteger());
-                statement.setString(6, weather.getWeatherType());
-                statement.setDouble(7, weather.getTemperature());
-                statement.setDouble(8, weather.getRain());
-                statement.setDouble(9, weather.getHumidity());
-                statement.setInt(10, weather.getClouds());
+                    statement.setDouble(1, weather.getLocation().getLatitude());
+                    statement.setDouble(2, weather.getLocation().getLongitude());
+                    statement.setString(3, weather.getLocation().getIsland());
+                    statement.setString(4, weather.getLocation().getName());
+                    statement.setLong(5, weather.getTimeInteger());
+                    statement.setString(6, weather.getWeatherType());
+                    statement.setDouble(7, weather.getTemperature());
+                    statement.setDouble(8, weather.getRain());
+                    statement.setDouble(9, weather.getHumidity());
+                    statement.setInt(10, weather.getClouds());
 
-                statement.executeUpdate();
-                System.out.println("Weather data inserted succesfully.");
+                    statement.executeUpdate();
+                }
             }
-        } else {
-            System.out.println("Weather object already exists in the database.");
+        } catch (SQLException e) {
+            e.getMessage();
         }
-    } catch (SQLException e) {
-        e.getMessage();
     }
-}
 
     @Override
     public boolean weatherExists(Connection connection, Weather weather) throws SQLException {
