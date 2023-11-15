@@ -2,11 +2,12 @@ package marrero_ferrera_gcid_ulpgc.test.control;
 
 import marrero_ferrera_gcid_ulpgc.test.model.*;
 
-import java.sql.SQLException;
+import java.util.Scanner;
 import java.util.Timer;
 
 public class Main {
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
+
         Location locationGC = new Location(28.01f, -15.58f, "Gran Canaria", "Risco Prieto");
         Location locationLGra = new Location(29.234f, -13.5f, "La Graciosa", "Caleta del Sebo");
         Location locationLzr = new Location(29f,  -13.5f, "Lanzarote", "Costa Teguise");
@@ -16,8 +17,16 @@ public class Main {
         Location locationEH = new Location(27.73f,  -18.05f, "El Hierro", "El Pinar");
         Location locationTnf = new Location(28.28f,  -16.64f, "Tenerife", "Parque Nacional del Teide");
 
-        String apiKey = "3c3aea5ce433b076c2f83b0c608896d8";
-        String dbPath = "weatherDataBase.db";
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Please introduce the API Key: ");
+        String apiKey = scanner.nextLine();
+
+        System.out.print("Please now introduce your desired database path: ");
+        String dbPath = scanner.nextLine();
+        scanner.close();
+
+        System.out.println("Task started and scheduled... \n(Ignore errors)");
 
         Timer timer = new Timer();
         short delay = 0;

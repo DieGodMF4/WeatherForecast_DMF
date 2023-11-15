@@ -13,7 +13,7 @@ public class SQLiteWeatherStore implements WeatherStore {
     public Connection connectWeather() {
         Connection conn = null;
         try {
-            String url = "jdbc:sqlite:" + dbPath;
+            String url = "jdbc:sqlite:" + dbPath + ".db";
             conn = DriverManager.getConnection(url);
             return conn;
         } catch (SQLException e) {
@@ -42,7 +42,7 @@ public class SQLiteWeatherStore implements WeatherStore {
 
     @Override
     public void insertWeather(Weather weather) throws SQLException {
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath)) {
+        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath + ".db")) {
             if (!weatherExists(connection, weather)) {
                 String query = "INSERT INTO weatherDataBase(id, latitude, longitude, island, name_place, time, weatherType, temperature, rain, humidity, clouds) " +
                         "VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -85,6 +85,6 @@ public class SQLiteWeatherStore implements WeatherStore {
     }
 
     public String getDbPath() {
-        return dbPath;
+        return "jdbc:sqlite:" + dbPath + ".db";
     }
 }
