@@ -25,23 +25,22 @@ public class SQLiteWeatherStore implements WeatherStore {
     @Override
     public void createTable(Connection connection) throws SQLException {
         Statement statement = connection.createStatement();
-        statement.execute("CREATE TABLE IF NOT EXISTS weatherDataBase (" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT," + "\n" +
-                "latitude REAL," + "\n" +
-                "longitude REAL," + "\n" +
-                "island TEXT," + "\n" +
-                "name_place TEXT," + "\n" +
-                "time INTEGER," + "\n" +
-                "weatherType TEXT," + "\n" +
-                "temperature REAL," + "\n" +
-                "rain REAL," + "\n" +
-                "humidity REAL," + "\n" +
-                "clouds INTEGER" +
-                ");");
+        statement.execute("""
+                CREATE TABLE IF NOT EXISTS weatherDataBase (id INTEGER PRIMARY KEY AUTOINCREMENT,\s
+                latitude REAL,
+                longitude REAL,
+                island TEXT,
+                name_place TEXT,
+                time TEXT,
+                weatherType TEXT,
+                temperature REAL,
+                rain REAL,
+                humidity REAL,
+                clouds INTEGER);""");
     }
 
     @Override
-    public void insertWeather(Weather weather) throws SQLException {
+    public void insertWeather(Weather weather) {
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:" + dbPath + ".db")) {
             if (!weatherExists(connection, weather)) {
                 String query = "INSERT INTO weatherDataBase(id, latitude, longitude, island, name_place, time, weatherType, temperature, rain, humidity, clouds) " +
@@ -52,7 +51,7 @@ public class SQLiteWeatherStore implements WeatherStore {
                     statement.setDouble(2, weather.getLocation().getLongitude());
                     statement.setString(3, weather.getLocation().getIsland());
                     statement.setString(4, weather.getLocation().getName());
-                    statement.setLong(5, weather.getTimeInteger());
+                    statement.setString(5, weather.getTsToString());
                     statement.setString(6, weather.getWeatherType());
                     statement.setDouble(7, weather.getTemperature());
                     statement.setDouble(8, weather.getRain());
@@ -73,7 +72,7 @@ public class SQLiteWeatherStore implements WeatherStore {
         try (PreparedStatement checkStatement = connection.prepareStatement(checkQuery)) {
             checkStatement.setFloat(1, weather.getLocation().getLatitude());
             checkStatement.setFloat(2, weather.getLocation().getLongitude());
-            checkStatement.setLong(3, weather.getTimeInteger());
+            checkStatement.setString(3, weather.getTsToString());
 
             try (ResultSet resultSet = checkStatement.executeQuery()) {
                 if (resultSet.next()) {
@@ -82,9 +81,5 @@ public class SQLiteWeatherStore implements WeatherStore {
             }
         }
         return false;
-    }
-
-    public String getDbPath() {
-        return "jdbc:sqlite:" + dbPath + ".db";
     }
 }

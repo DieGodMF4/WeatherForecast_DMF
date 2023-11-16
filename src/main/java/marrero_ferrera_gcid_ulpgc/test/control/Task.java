@@ -10,9 +10,9 @@ import java.time.ZoneId;
 import java.util.TimerTask;
 
 public class Task extends TimerTask {
-    private Location location;
-    private String  apiKey;
-    private String dbPath;
+    private final Location location;
+    private final String  apiKey;
+    private final String dbPath;
     public Task(Location location, String apiKey, String dbPath) {
         this.location = location;
         this.apiKey = apiKey;
@@ -41,29 +41,5 @@ public class Task extends TimerTask {
                 throw new RuntimeException(e);
             }
         }
-    }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
-    public String getApiKey() {
-        return apiKey;
-    }
-
-    public void setApiKey(String apiKey) {
-        this.apiKey = apiKey;
-    }
-
-    public String getDbPath() {
-        return dbPath;
-    }
-
-    public void setDbPath(String dbPath) {
-        this.dbPath = dbPath;
     }
 }

@@ -10,27 +10,9 @@ import org.apache.http.util.EntityUtils;
 import java.time.Instant;
 
 public class OpenWeatherMapSupplier implements WeatherSupplier {
-    private Location location;
-    private String apiKey;
+    private final String apiKey;
 
-    public OpenWeatherMapSupplier(Location location, String apiKey) {
-        this.location = location;
-        this.apiKey = apiKey;
-    }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
-    public String getApiKey() {
-        return apiKey;
-    }
-
-    public void setApiKey(String apiKey) {
+    public OpenWeatherMapSupplier(String apiKey) {
         this.apiKey = apiKey;
     }
 
@@ -70,8 +52,7 @@ public class OpenWeatherMapSupplier implements WeatherSupplier {
                     humidity = currentListObject.getAsJsonObject("main")
                             .get("humidity").getAsFloat();
                     rain = currentListObject.get("pop").getAsFloat();
-                    Weather weather = new Weather(weatherType, cloud, temperature, humidity, location, ts, rain);
-                    return weather;
+                    return new Weather(weatherType, cloud, temperature, humidity, location, ts, rain);
                 }
             }
 
