@@ -8,7 +8,7 @@ Java program made for extracting weather information from a REST Api through the
 <a name="openweather"></a>
 
 
-This code, specifically, consists on making an API call every 6 hours for fetching the already registered locations of the **weather forecast** for the next 5 days at 12:00 local time. These locations are punctual chosen ones for each of the 8 islands that constitue the Chinijo Archipielago (Canary Islands).
+This code, specifically, consists on making an API call every 6 hours for fetching the already registered locations of the **weather forecast** for the next 5 days at 12:00 local time. These locations are punctual chosen ones for each of the 8 islands that constitute the Chinijo Archipielago (Canary Islands).
 
 
 ## Execution
