@@ -14,7 +14,7 @@ This code, specifically, consists on making an API call every 6 hours for fetchi
 ## Execution
 
 For the execution of the code, you will first need to be in the **Main.java** class: (```src/main/java/marrero_ferrera_gcid_ulpgc/test/control/Main.java```). \
-After that, you can freely start debugging and run de code, and it will ask for an **API Key** and the **database name and path**.
+After that, you can freely start debugging and run the code; it will ask for an **API Key** and the **database name and path**.
 
 
 In the following line, you will have an example suitable API Key for making the call to the REST Api, and a simple path to create the database: \
